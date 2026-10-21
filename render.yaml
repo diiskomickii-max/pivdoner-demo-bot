@@ -1,8 +1,8 @@
 services:
-  - type: worker
-    name: pivdoner-bot
+  - type: web
+    name: pivdoner-demo-bot
     runtime: python
-    plan: starter
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: python bot.py
     autoDeploy: true
@@ -12,6 +12,8 @@ services:
       - key: MANAGER_CHAT_ID
         sync: false
       - key: DEMO_MODE
-        value: "0"
+        value: "1"
+      - key: SELLER_CONTACT
+        value: "@xxlkkl"
       - key: PAYMENT_ENABLED
         value: "1"
