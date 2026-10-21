@@ -8,11 +8,22 @@ def main_menu() -> ReplyKeyboardMarkup:
         keyboard=[
             [KeyboardButton(text="🛒 Оформить предзаказ")],
             [KeyboardButton(text="🍔 Меню"), KeyboardButton(text="🧺 Корзина")],
-            [KeyboardButton(text="👤 Мой профиль"), KeyboardButton(text="🎮 Мини-игра")],
-            [KeyboardButton(text="📖 Как работает бот"), KeyboardButton(text="📍 Адрес")],
+            [KeyboardButton(text="👤 Мой профиль"), KeyboardButton(text="📜 История заказов")],
+            [KeyboardButton(text="🎮 Мини-игра"), KeyboardButton(text="📍 Адрес")],
+            [KeyboardButton(text="📖 Как работает бот")],
         ],
         resize_keyboard=True,
     )
+
+
+def quick_actions_kb() -> InlineKeyboardMarkup:
+    kb = InlineKeyboardBuilder()
+    kb.row(InlineKeyboardButton(text="🛒 Оформить заказ", callback_data="quick_order"))
+    kb.row(
+        InlineKeyboardButton(text="👤 Личный кабинет", callback_data="quick_profile"),
+        InlineKeyboardButton(text="📜 Мои заказы", callback_data="quick_history"),
+    )
+    return kb.as_markup()
 
 
 def categories_kb() -> InlineKeyboardMarkup:
