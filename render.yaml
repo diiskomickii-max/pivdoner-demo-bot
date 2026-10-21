@@ -1,0 +1,17 @@
+services:
+  - type: worker
+    name: pivdoner-bot
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    autoDeploy: true
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: MANAGER_CHAT_ID
+        sync: false
+      - key: DEMO_MODE
+        value: "0"
+      - key: PAYMENT_ENABLED
+        value: "1"
